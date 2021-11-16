@@ -13,8 +13,12 @@ describe "Author", type: :model do
         author = Author.new({"first_name"=>"Alan", "last_name"=>"Turing", "homepage"=>"http://wikipedia.org/Alan_Turing"})
         expect(author.homepage).to eq("http://wikipedia.org/Alan_Turing")
     end
-    it "returns the correct full name" do
+    it "should return the correct full name" do
         author = Author.new({"first_name"=>"Alan", "last_name"=>"Turing", "homepage"=>"http://wikipedia.org/Alan_Turing"})
         expect(author.name).to eq("Alan Turing")
+    end
+    it "should return invalid if an author has no last name" do
+        author = Author.new({"first_name"=>"Alan", "last_name"=>"", "homepage"=>"http://wikipedia.org/Alan_Turing"})
+        expect(author).to_not be_valid
     end
 end
